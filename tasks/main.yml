@@ -9,18 +9,12 @@
   tags:
     - security-apt
 
-- name: Include additional vars for vmware
-  include_vars: linode_default_pkgs.yml
-  when: env == 'build'
-
-- name: Conform local vmware instance to target platform
-  apt: pkg={{ item }}
-  with_items: platform_pkgs
-  when: env == 'build'
-
 - name: Install base packages
   apt: pkg={{ item }} state=latest
   with_items: base_pkgs
+
+- include: vmware.yml
+  when: env == 'build'
 
 - name: Message of the day
   template: src=motd.j2 dest=/etc/motd owner=root group=root mode=644

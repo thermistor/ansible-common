@@ -2,9 +2,7 @@
 
 - name: Include additional vars for vmware
   include_vars: linode_default_pkgs.yml
-  when: env == 'build'
 
 - name: Conform local vmware instance to target platform
   apt: pkg={{ item }}
   with_items: platform_pkgs
-  when: env == 'build'
