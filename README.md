@@ -22,8 +22,6 @@ Here is an example configuration:
       roles:
         - { role: thermistor.common, motd_title: 'Hello there' }
 
-
 ## License
 
 Licensed under the MIT License. See the LICENSE file for details.
-
