@@ -8,6 +8,7 @@ Works on ubuntu.
 
 ## Role Variables
 
+* `dev_ops_keys` - An array of authorized keys
 * `motd_title` - A message displayed at login
 
 ## Dependencies

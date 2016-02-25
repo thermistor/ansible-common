@@ -1,0 +1,14 @@
+---
+
+- name: Add the ansible user to the sudo group
+  user: name={{ ansible_user }} groups=sudo append=yes
+
+- name: Install the authorized keys for ansible deployers
+  authorized_key:
+    user: "{{ ansible_user }}"
+    key: "{{ item }}"
+  with_items:
+    - dev_ops_keys
+  tags:
+    - security
+

@@ -25,6 +25,10 @@
 - name: Message of the day
   template: src=motd.j2 dest=/etc/motd owner=root group=root mode=644
 
+- include: ansible_user.yml
+  tags:
+    - security
+
 - name: Disable root login via ssh when root is not the ansible_ssh_user
   lineinfile: dest=/etc/ssh/sshd_config regexp=^PermitRootLogin line='PermitRootLogin no'
   notify:

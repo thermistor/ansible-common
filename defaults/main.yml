@@ -1,5 +1,4 @@
 ---
-motd_title: ''
 base_pkgs:
   - ack-grep
   - apticron
@@ -12,3 +11,5 @@ base_pkgs:
   - libwww-perl
   - lsof
   - update-notifier-common
+dev_ops_keys: []
+motd_title: ''
