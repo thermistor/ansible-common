@@ -1,0 +1,14 @@
+---
+motd_title: ''
+base_pkgs:
+  - ack-grep
+  - apticron
+  - ca-certificates
+  - command-not-found
+  - curl
+  - git-core
+  - language-pack-en
+  - libssl-dev
+  - libwww-perl
+  - lsof
+  - update-notifier-common

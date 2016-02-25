@@ -1,0 +1,39 @@
+---
+- name: Update the apt cache if older than 2 hrs
+  apt: update_cache=yes cache_valid_time=7200
+  tags:
+    - security-apt
+
+- name: Upgrade packages for security updates
+  apt: upgrade=safe
+  tags:
+    - security-apt
+
+- name: Include additional vars for vmware
+  include_vars: linode_default_pkgs.yml
+  when: env == 'build'
+
+- name: Conform local vmware instance to target platform
+  apt: pkg={{ item }}
+  with_items: platform_pkgs
+  when: env == 'build'
+
+- name: Install base packages
+  apt: pkg={{ item }} state=latest
+  with_items: base_pkgs
+
+- name: Message of the day
+  template: src=motd.j2 dest=/etc/motd owner=root group=root mode=644
+
+- name: Disable root login via ssh when root is not the ansible_ssh_user
+  lineinfile: dest=/etc/ssh/sshd_config regexp=^PermitRootLogin line='PermitRootLogin no'
+  notify:
+    - restart ssh
+  tags:
+    - security
+  when: ansible_ssh_user != 'root'
+
+# do this last so it doesn't hang the first run that is using --ask-sudo-pass (-K)
+- name: Install sudoers file
+  copy: src=sudoers dest=/etc/sudoers.d/no_passwd owner=root group=root mode=0440 validate='visudo -cf %s'
+
