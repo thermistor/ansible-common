@@ -118,6 +118,7 @@ galaxy_info:
   #  - raring
   #  - saucy
     - trusty
+    - xenial
   #  - utopic
   #  - vivid
   #  - wily
