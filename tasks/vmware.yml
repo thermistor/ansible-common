@@ -5,4 +5,4 @@
 
 - name: Conform local vmware instance to target platform
   apt: pkg={{ item }}
-  with_items: platform_pkgs
+  with_items: '{{ platform_pkgs }}'

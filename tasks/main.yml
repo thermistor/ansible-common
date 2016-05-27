@@ -11,7 +11,7 @@
 
 - name: Install base packages
   apt: pkg={{ item }} state=latest
-  with_items: base_pkgs
+  with_items: '{{ base_pkgs }}'
 
 - include: vmware.yml
   when: env == 'build'
