@@ -1,0 +1,4 @@
+---
+
+- name: Change default systemd target to be multi-user.target instead of graphical.target
+  command: systemctl set-default multi-user.target

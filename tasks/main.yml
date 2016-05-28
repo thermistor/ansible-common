@@ -16,6 +16,11 @@
 - include: vmware.yml
   when: env == 'build'
 
+- include: systemd.yml
+  when: "'{{ ansible_distribution_release }}' == 'xenial'"
+  tags:
+    - systemd
+
 - name: Message of the day
   template: src=motd.j2 dest=/etc/motd owner=root group=root mode=644
 
