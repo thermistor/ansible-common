@@ -2,6 +2,7 @@
 base_pkgs:
   - ack-grep
   - apticron
+  - aptitude
   - ca-certificates
   - command-not-found
   - curl
