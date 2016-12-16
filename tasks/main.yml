@@ -28,14 +28,6 @@
   tags:
     - security
 
-- name: Disable root login via ssh when root is not the ansible_ssh_user
-  lineinfile: dest=/etc/ssh/sshd_config regexp=^PermitRootLogin line='PermitRootLogin no'
-  notify:
-    - restart ssh
-  tags:
-    - security
-  when: ansible_ssh_user != 'root'
-
 # do this last so it doesn't hang the first run that is using --ask-sudo-pass (-K)
 - name: Install sudoers file
   copy: src=sudoers dest=/etc/sudoers.d/no_passwd owner=root group=root mode=0440 validate='visudo -cf %s'
