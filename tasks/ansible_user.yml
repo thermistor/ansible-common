@@ -7,4 +7,3 @@
   with_items: '{{ dev_ops_keys }}'
   tags:
     - security
-
