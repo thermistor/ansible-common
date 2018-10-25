@@ -1,8 +1,0 @@
----
-
-- name: Include additional vars for vmware
-  include_vars: linode_default_pkgs_{{ ansible_distribution_version }}.yml
-
-- name: Conform local vmware instance to target platform
-  apt: pkg={{ item }}
-  with_items: '{{ platform_pkgs }}'

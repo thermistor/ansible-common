@@ -8,20 +8,19 @@ Works on ubuntu.
 
 ## Role Variables
 
-* `dev_ops_keys` - An array of authorized keys
+* `dev_ops_keys` - An array of authorized keys for ssh
 * `motd_title` - A message displayed at login
 
-## Dependencies
+## Example usage
 
-Uses `ANXS.hostname` to set the hostname.
-
-## Example Playbook
-
-Here is an example configuration:
+In a playbook:
 
     - hosts: appservers
       roles:
-        - { role: thermistor.common, motd_title: 'Hello there' }
+        - role: thermistor.common
+          motd_title: 'Hello there'
+          dev_ops_keys:
+            - "{{ lookup('file', 'files/ssh_keys/yourkey.pub') }}"
 
 ## License
 

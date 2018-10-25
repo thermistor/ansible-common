@@ -1,7 +1,6 @@
 ---
 - name: Install base packages
-  apt: pkg={{ item }} state=latest
-  with_items: '{{ base_pkgs }}'
+  apt: pkg={{ base_pkgs }} state=latest
 
 - name: Update the apt cache if older than 2 hrs
   apt: update_cache=yes cache_valid_time=7200
@@ -13,22 +12,13 @@
   tags:
     - security-apt
 
-- include: vmware.yml
-  when: env == 'build'
-
-- include: systemd.yml
-  when: "'{{ ansible_distribution_release }}' == 'xenial'"
-  tags:
-    - systemd
-
 - name: Message of the day
   template: src=motd.j2 dest=/etc/motd owner=root group=root mode=644
+
+- include: hostname.yml
+  tags:
+    - hostname
 
 - include: ansible_user.yml
   tags:
     - security
-
-# do this last so it doesn't hang the first run that is using --ask-sudo-pass (-K)
-- name: Install sudoers file
-  copy: src=sudoers dest=/etc/sudoers.d/no_passwd owner=root group=root mode=0440 validate='visudo -cf %s'
-
