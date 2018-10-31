@@ -1,7 +1,4 @@
 ---
-- name: Install base packages
-  apt: pkg={{ base_pkgs }} state=latest
-
 - name: Update the apt cache if older than 2 hrs
   apt: update_cache=yes cache_valid_time=7200
   tags:
@@ -11,6 +8,9 @@
   apt: upgrade=safe
   tags:
     - security-apt
+
+- name: Install base packages
+  apt: pkg={{ base_pkgs }} state=latest
 
 - name: Message of the day
   template: src=motd.j2 dest=/etc/motd owner=root group=root mode=644
