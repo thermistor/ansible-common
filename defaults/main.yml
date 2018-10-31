@@ -1,6 +1,5 @@
 ---
 base_pkgs:
-  - ack-grep
   - apticron
   - aptitude
   - ca-certificates
@@ -11,6 +10,7 @@ base_pkgs:
   - libssl-dev
   - libwww-perl
   - lsof
+  - silversearcher-ag
   - update-notifier-common
 dev_ops_keys: []
 motd_title: ''
