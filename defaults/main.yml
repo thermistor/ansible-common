@@ -1,6 +1,5 @@
 ---
 base_pkgs:
-  - apticron
   - aptitude
   - ca-certificates
   - command-not-found
@@ -12,5 +11,6 @@ base_pkgs:
   - lsof
   - silversearcher-ag
   - update-notifier-common
+additional_pkgs: []
 dev_ops_keys: []
 motd_title: ''
