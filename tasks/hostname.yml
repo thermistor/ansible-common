@@ -16,12 +16,12 @@
   lineinfile:
     dest: /etc/hosts
     regexp: "^127.0.0.1"
-    line: "127.0.0.1{{'\t'}}{{ inventory_hostname }}{% if inventory_hostname != inventory_hostname_short %}{{'\t'}}{{ inventory_hostname_short }}{% endif %}{{'\t'}}localhost"
+    line: "127.0.0.1{{ '\t' }}{{ inventory_hostname }}{% if inventory_hostname != inventory_hostname_short %}{{'\t'}}{{ inventory_hostname_short }}{% endif %}{{'\t'}}localhost"
     state: present
 
 - name: Add hostname alias to IPv6 localhost in /etc/hosts
   lineinfile:
     dest: /etc/hosts
     regexp: "^::1"
-    line: "::1{{'\t\t'}}{{ inventory_hostname }}{% if inventory_hostname != inventory_hostname_short %}{{'\t'}}{{ inventory_hostname_short }}{% endif %}{{'\t'}}localhost ip6-localhost ip6-loopback"
+    line: "::1{{ '\t\t' }}{{ inventory_hostname }}{% if inventory_hostname != inventory_hostname_short %}{{'\t'}}{{ inventory_hostname_short }}{% endif %}{{'\t'}}localhost ip6-localhost ip6-loopback"
     state: present
