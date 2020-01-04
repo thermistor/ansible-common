@@ -1,5 +1,5 @@
 ---
-base_pkgs:
+common_base_pkgs:
   - aptitude
   - ca-certificates
   - command-not-found
@@ -11,6 +11,6 @@ base_pkgs:
   - lsof
   - silversearcher-ag
   - update-notifier-common
-additional_pkgs: []
-dev_ops_keys: []
-motd_title: ''
+common_dev_ops_keys: []
+common_dev_ops_keys_exclusive: False
+common_motd_title: ''

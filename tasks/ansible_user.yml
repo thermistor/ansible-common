@@ -3,7 +3,7 @@
 - name: Install the authorized keys for ansible deployers
   authorized_key:
     user: '{{ ansible_user }}'
-    key: "{{ dev_ops_keys | join('\n') }}"
-    exclusive: True
+    key: "{{ common_dev_ops_keys | join('\n') }}"
+    exclusive: "{{ common_dev_ops_keys_exclusive }}"
   tags:
     - security
