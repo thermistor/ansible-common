@@ -1,5 +1,6 @@
 ---
 common_base_pkgs:
+  - acl
   - aptitude
   - ca-certificates
   - command-not-found
