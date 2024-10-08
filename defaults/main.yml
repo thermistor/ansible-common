@@ -10,8 +10,9 @@ common_base_pkgs:
   - libssl-dev
   - libwww-perl
   - lsof
-  - silversearcher-ag
+  - net-tools
+  - ripgrep
   - update-notifier-common
 common_dev_ops_keys: []
-common_dev_ops_keys_exclusive: False
+common_dev_ops_keys_exclusive: false
 common_motd_title: ''

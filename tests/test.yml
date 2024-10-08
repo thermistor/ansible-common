@@ -1,5 +1,6 @@
 ---
-- hosts: localhost
+- name: Test play for thermistor.common
+  hosts: localhost
   remote_user: root
   roles:
-    - common
+    - thermistor.common

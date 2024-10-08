@@ -1,18 +1,18 @@
 galaxy_info:
+  role_name: common
+  namespace: thermistor
   author: Weston Triemstra
   description: Common server configuration
   company: Netsign
 
   license: MIT
 
-  min_ansible_version: 1.2
+  min_ansible_version: '2.16'
 
   platforms:
-  - name: Ubuntu
-    versions:
-    - trusty
-    - xenial
-    - bionic
+    - name: Ubuntu
+      versions:
+        - jammy
 
   galaxy_tags: []
 

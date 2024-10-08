@@ -1,24 +1,36 @@
 ---
 - name: Update the apt cache if older than 2 hrs
-  apt: update_cache=yes cache_valid_time=7200
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: 7200
   tags:
     - security-apt
 
 - name: Upgrade packages for security updates
-  apt: upgrade=safe
+  ansible.builtin.apt:
+    upgrade: safe
   tags:
     - security-apt
 
 - name: Install base packages
-  apt: pkg={{ common_base_pkgs }} state=present
+  ansible.builtin.apt:
+    pkg: "{{ common_base_pkgs }}"
+    state: present
 
 - name: Message of the day
-  template: src=motd.j2 dest=/etc/motd owner=root group=root mode=0644
+  ansible.builtin.template:
+    src: motd.j2
+    dest: /etc/motd
+    owner: root
+    group: root
+    mode: '0644'
 
-- include: hostname.yml
+- name: Include hostname tasks
+  ansible.builtin.include_tasks: hostname.yml
   tags:
     - hostname
 
-- include: ansible_user.yml
+- name: Include ansible_user tasks
+  ansible.builtin.include_tasks: ansible_user.yml
   tags:
     - security
