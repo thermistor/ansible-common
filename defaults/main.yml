@@ -5,7 +5,7 @@ common_base_pkgs:
   - ca-certificates
   - command-not-found
   - curl
-  - git-core
+  - git
   - language-pack-en
   - libssl-dev
   - libwww-perl
