@@ -6,6 +6,11 @@ Common server configuration
 
 Works on ubuntu.
 
+Requires the `ansible.posix` collection, version 2.2.2 or later. It is
+included in the `ansible` package; with `ansible-core` alone, install it with:
+
+    ansible-galaxy collection install 'ansible.posix>=2.2.2'
+
 ## Role Variables
 
 * `common_base_pkgs` - An array of base pkgs

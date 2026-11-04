@@ -16,12 +16,16 @@
   ansible.builtin.lineinfile:
     dest: /etc/hosts
     regexp: "^127.0.0.1"
-    line: "127.0.0.1 {{ inventory_hostname }}{% if inventory_hostname != inventory_hostname_short %} {{ inventory_hostname_short }}{% endif %} localhost"
+    line: >-
+      127.0.0.1 {{ inventory_hostname }}{% if inventory_hostname != inventory_hostname_short %} {{ inventory_hostname_short }}{% endif %}
+      localhost
     state: present
 
 - name: Add hostname alias to IPv6 localhost in /etc/hosts
   ansible.builtin.lineinfile:
     dest: /etc/hosts
     regexp: "^::1"
-    line: "::1 {{ inventory_hostname }}{% if inventory_hostname != inventory_hostname_short %} {{ inventory_hostname_short }}{% endif %} localhost ip6-localhost ip6-loopback"
+    line: >-
+      ::1 {{ inventory_hostname }}{% if inventory_hostname != inventory_hostname_short %} {{ inventory_hostname_short }}{% endif %}
+      localhost ip6-localhost ip6-loopback
     state: present
